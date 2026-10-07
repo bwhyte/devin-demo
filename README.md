@@ -66,11 +66,19 @@ Bank Security Application/
 
 1. Open a terminal in the project root.
 2. Update MySQL and JWT settings in `src/main/resources/application.yml` if needed.
-3. Run `mvn test`.
-4. Run `mvn spring-boot:run`.
+3. Run `./mvnw test` (tests use the in-memory H2 `test` profile; no MySQL needed).
+4. Run `./mvnw spring-boot:run` (against MySQL).
 5. Register a user with `POST /user/register`.
 6. Log in with `POST /user/login`.
 7. Call protected endpoints with `Authorization: Bearer <token>`.
+
+To run the app without MySQL, use the H2 `test` profile from `src/test/resources/application-test.yml`:
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=test \
+  -Dspring-boot.run.useTestClasspath=true \
+  -Dspring-boot.run.directories=target/test-classes
+```
 
 Available endpoints:
 
