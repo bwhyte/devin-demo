@@ -66,7 +66,7 @@ Bank Security Application/
 
 1. Open a terminal in the project root.
 2. Update MySQL and JWT settings in `src/main/resources/application.yml` if needed.
-3. Run `./mvnw test` (tests use the in-memory H2 `test` profile; no MySQL needed).
+3. Run `./mvnw verify` to run the tests and write a JaCoCo line-coverage report to `target/site/jacoco/index.html`. Tests use the in-memory H2 `test` profile, so MySQL isn't needed. The build fails if line coverage drops below 95%.
 4. Run `./mvnw spring-boot:run` (against MySQL).
 5. Register a user with `POST /user/register`.
 6. Log in with `POST /user/login`.
